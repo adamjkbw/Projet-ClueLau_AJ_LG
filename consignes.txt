@@ -1,6 +1,5 @@
 A FAIRE POUR MARDI SOIR
 - repo github
-https://github.com/adamjkbw/Projet-ClueLau_AJ_LG
 - analyse du besoin
 - conception technique
 - scrum board a completer (US et taches)
