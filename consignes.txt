@@ -1,0 +1,36 @@
+A FAIRE POUR MARDI SOIR
+- repo github
+https://github.com/adamjkbw/Projet-ClueLau_AJ_LG
+- analyse du besoin
+- conception technique
+- scrum board a completer (US et taches)
+
+
+ClueLau demande un jeu d'enquête type Cluedo
+- Dans le terminal
+- mécanique de déduction
+- combinaison secrète
+- Plusieurs joueurs peuvent participer
+- joueurs humains et ordinateurs
+- deux comportements d'intelligence artificielle :
+    -> 1 comportement naif, simple
+    -> 1 comportement plus évolué, capable de tenir compte de ce qui s'est passé pendant la partie (mémorise les infos utiles et adopte une stratégie subtile ou mm trompeuse)
+
+-> interface claire
+
+Attentes d'evaluation
+
+LIVRABLES 
+- codé en c
+- documents résultant de l'analyse de la conception
+- Code disponible sur GitHub et application fonctionnelle
+- README d'installation et d'utilisation
+- Documentation du code et des tests
+- Présentation PowerPoint
+
+EVALUATION
+- Fonctionnalités conformes au sujet
+- Respect des jalons donnés
+- Qualité logicielle (structure, lisibilité, robustesse tests)
+- Echanges avec le client
+- Proposition d'innovations
