@@ -1,2 +1,30 @@
 CONCEPTION TECHNIQUE
 
+un fichier .c ou les fonctions qui serviront a chaque partie du jeu seront programmées
+
+-> fonction tour (qui fait passer le tour au premier joueur ou sinon au prochain)
+-> fonction de (fait un jet aleatoire pour savoir si le joueur pioche une carte)
+-> fonction deplacement (demande au joueur si il veut se deplacer puis change son emplacement dans le manoir)
+-> fonction question (permet au joueur de poser une question a un joueur)
+-> fonction reponse (qui permet au joueur de repondre a la question en montrant une carte)
+-> fonction accusation (permet a un joueur d accuser quelqu un dans un lieu specifique avec une arme et le nom du personnage)
+-> fonction verif (verifie si l accusation est correcte et si le joueur ou l IA perd ou gagne)
+-> fonction con (verifie si il y a toujours des joueurs ou si qlq a gagne pour continuer la boucle du jeu ou pas)
+
+
+un fichier .h qui fait le lien entre le main et le .c (en definissant toutes les fonctions du fichier .c) ou se trouvent aussi les struct (dans ce cas un struct joueur, un struct ia, un struct cartes, un struct manoir)
+
+
+un fichier main ou se passe la boucle du jeu ou les fonctions du fichier .c sont utilisées dans l ordre suivant : 
+"includes"
+"definition des variables"
+boucle while
+ - de
+ - deplacement
+ - question
+ si question :
+   - reponse
+ - accusation
+ si accusation :
+   - verif
+ - cont
