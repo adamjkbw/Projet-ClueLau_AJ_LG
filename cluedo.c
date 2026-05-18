@@ -1,5 +1,6 @@
 #include "cluedo.h"
 
+#include <algorithm>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -59,7 +60,7 @@ player* createAi() {
     return newP;
 }
 
-void addParticipants (player* participants[], int* count) {
+int addParticipants (player* participants[], int* count) {
     //Cette fonction remplit le tableau de joueurs jusqu'à être au maximum (6) ou jusqu'à ce que l'user décide de l'arrêter
     // il prend en paramètre un tableau de type joueur
     int loop = 0;
@@ -91,9 +92,68 @@ void addParticipants (player* participants[], int* count) {
         }
 
     }
+    return count;
 
 }
 
-distribCartes(player* participants, int* count) {
+void initCards(player* list[]){
+    const char* nomsCartes[18] = {
+            // Suspects
+            "Mlle Rose", "Col. Moutarde", "Prof. Violet", "Mme Blanche", "Dr Olive", "Mme Pervenche",
+            // Armes
+            "Poignard", "Chandelier", "Revolver", "Corde", "Cle Anglaise", "Tuyau de Plomb",
+            // Pièces
+            "Cuisine", "Grand Salon", "Veranda", "Petit Salon", "Salle a Manger", "Bureau"
+        };
+
+    for (int i = 0; i < 18; i++) {
+            // Allocation de la mémoire pour UNE carte
+            listeCartes[i] = malloc(sizeof(card));
+
+            if (listeCartes[i] != NULL) {
+                strncpy(listeCartes[i]->name, nomsCartes[i], 31);
+                listeCartes[i]->name[31] = '\0';
+            } else {
+                printf("Erreur d'allocation mémoire pour la carte %d\n", i);
+            }
+
+    }
+}
+
+void melangerCartes(card* listeCartes[18]) {
+    for (int i = 17; i > 0; i--) {
+        // Choisit un index aléatoire entre 0 et i
+        int j = rand() % (i + 1);
+
+        // Échange les pointeurs
+        card* temp = listeCartes[i];
+        listeCartes[i] = listeCartes[j];
+        listeCartes[j] = temp;
+    }
+}
+
+void distribCartes(player* participants[], card* listCards[], int count) {
+
+    void distribuerCartes(card* listeCartes[18], player* participants[], int nbJoueurs) {
+
+        melangerCartes(listeCartes);
+
+
+        int indexCarteJoueur[6] = {0};
+        int joueurActuel = 0;
+
+        for (int i = 0; i < 18; i++) {
+            player* p = participants[joueurActuel];
+            int positionDansSonDeck = indexCarteJoueur[joueurActuel];
+
+            strncpy(p->cards[positionDansSonDeck].name, listeCartes[i]->name, 31);
+            p->cards[positionDansSonDeck].name[31] = '\0';
+
+            indexCarteJoueur[joueurActuel]++;
+
+            joueurActuel = (joueurActuel + 1) % nbJoueurs;
+        }
+        printf("Toutes les cartes ont ete distribuees !\n");
+    }
 
 }
