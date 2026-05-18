@@ -138,6 +138,30 @@ void initCards(card *cardList[])
     }
 }
 
+void chooseWinningCards(card* cardList[], int cardCount, card* winning[3]) {
+    card* byType[3][24];
+    int typeCounts[3] = {0, 0, 0};
+
+    for (int i = 0; i < cardCount; i++) {
+        int t = cardList[i]->type;
+        if (t >= 0 && t < 3) {
+            byType[t][typeCounts[t]++] = cardList[i];
+        }
+    }
+
+    srand(time(NULL));
+
+    for (int t = 0; t < 3; t++) {
+        if (typeCounts[t] == 0) {
+            winning[t] = NULL;
+            continue;
+        }
+        int roll = rand() % typeCounts[t];
+        winning[t] = byType[t][roll];
+        winning[t]->chosen = 1;
+    }
+}
+
 void melangerCartes(card *listeCartes[18])
 {
     for (int i = 17; i > 0; i--)
