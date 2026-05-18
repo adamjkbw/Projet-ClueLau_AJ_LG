@@ -207,7 +207,6 @@ void deplacement(player *participant, int nbJoueurs, char pieces[])
         printf("Votre choix (1-6) : ");
         if (scanf("%d", &choix) != 1)
         {
-            // Vider le buffer en cas de saisie invalide
             while (getchar() != '\n')
                 ;
             choix = 0;
