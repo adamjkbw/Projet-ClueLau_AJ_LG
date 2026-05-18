@@ -1,24 +1,21 @@
 #ifndef CLUEDO_H
 #define CLUEDO_H
 
-typedef struct {
+typedef struct card {
     char name[32];
 }card;
 
-typedef struct {
+typedef struct player{
     char name[32];
     card cards[24];
+    int ai;
 
 }player;
 
-typedef struct {
-    char name[32];
-    card cards[24];
-}ai;
-
 void addName(player* self);
 player* addPlayer ();
-ai* createAi();
-void addParticipants();
+player* createAi();
+void addParticipants(player* participants[], int* count);
+void distribCartes (player* participants[], int*count);
 
 #endif

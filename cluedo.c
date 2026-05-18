@@ -6,6 +6,7 @@
 
 
 void addName(player* self) {
+    //Cette fonction sert a rajouter un nom custom à un joueur
     printf("Quel est le nom du joueur? : ");
     if (scanf("%31s", self->name) == 1) {
         system("cls");
@@ -14,7 +15,9 @@ void addName(player* self) {
 }
 
 player* addPlayer () {
+    // cette fonction sert a creer un joueur
     player* newP = malloc(sizeof(player));
+    newP->ai = 0;
     if (newP != NULL) {
         addName(newP);
     }
@@ -27,9 +30,11 @@ player* addPlayer () {
 
 }
 
-ai* createAi() {
+player* createAi() {
+    //cette fonction permet de créer un joueur spécifiquement de type IA
 
-    ai* newP = malloc(sizeof(ai));
+    player* newP = malloc(sizeof(player));
+    newP->ai = 1;
 
     const char* names[] = {
         "Silas", "Elena", "Arthur", "Clara", "Julian", "Beatrix", "Victor", "Lydia", "Sebastian", "Evelyn"
@@ -46,6 +51,7 @@ ai* createAi() {
             newP->cards[i].name[0] = '\0';
         }
 
+
     system("cls");
     printf("%s a ete rajoute\n", newP->name);
 
@@ -53,11 +59,13 @@ ai* createAi() {
     return newP;
 }
 
-void addParticipants () {
+void addParticipants (player* participants[], int* count) {
+    //Cette fonction remplit le tableau de joueurs jusqu'à être au maximum (6) ou jusqu'à ce que l'user décide de l'arrêter
+    // il prend en paramètre un tableau de type joueur
     int loop = 0;
     char choice;
     char choice2;
-    while (loop == 0) {
+    while (loop == 0 && *count <= 6) {
         printf("Voulez vous rajouter un participant? (O/N)\n");
         scanf(" %c", &choice);
         if (choice == 'O') {
@@ -65,11 +73,13 @@ void addParticipants () {
             scanf(" %c", &choice2);
 
             if (choice2 == 'J') {
-                player* p = addPlayer();
+                participants[*count] = addPlayer();
+                (*count)++;
             }
 
             else if (choice2 == 'I') {
-                ai* a = createAi();
+                participants[*count] = createAi();
+                (*count)++;
             }
 
             choice = ' ';
@@ -81,5 +91,9 @@ void addParticipants () {
         }
 
     }
+
+}
+
+distribCartes(player* participants, int* count) {
 
 }
