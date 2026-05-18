@@ -33,3 +33,22 @@ EVALUATION
 - Qualité logicielle (structure, lisibilité, robustesse tests)
 - Echanges avec le client
 - Proposition d'innovations
+
+
+
+MENU
+-se deplacer
+-formuler une hypothese
+-réfutation de l'hypothese
+-accusation finale 
+
+void menu()
+{
+    int choix;
+    printf("===== Menu Cluelau =====\n");
+    print("C'est le tour de %s \n", );
+    printf("1. Se deplacer (obligatoire)\n");
+    printf("2. Formuler une hypothese\n");
+    printf("3. Faire une accusation \n");
+    scanf("%d", choix);
+}
