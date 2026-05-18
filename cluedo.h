@@ -3,6 +3,7 @@
 
 typedef struct {
     char name[32];
+    int type;
     int chosen;
 }card;
 
@@ -10,6 +11,7 @@ typedef struct player{
     char name[32];
     card cards[24];
     int ai;
+    char currentRoom[32];
 
 }player;
 
