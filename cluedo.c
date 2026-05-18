@@ -175,13 +175,47 @@ void distribCartes(player *participants[], card *listCards[], int count)
     printf("Toutes les cartes ont ete distribuees !\n");
 }
 
-void menu()
+void menu(char nomJoueur)
 {
     int choix;
     printf("===== Menu Cluelau =====\n");
-    print("C'est le tour de %s \n", );
+    print("C'est le tour de %s \n", nomJoueur);
     printf("1. Se deplacer (obligatoire)\n");
     printf("2. Formuler une hypothese\n");
     printf("3. Faire une accusation \n");
     scanf("%d", choix);
+}
+
+void deplacement(player *participant, int nbJoueurs, char pieces[])
+{
+
+    int choix = 0;
+
+    printf("\n=== Deplacement de %s ===\n", participant->name);
+
+    if (participant->currentRoom[0] != '\0')
+        printf("Salle actuelle : %s\n", participant->currentRoom);
+    else
+        printf("Salle actuelle : aucune (debut de partie)\n");
+
+    printf("\nChoisissez une salle :\n");
+    for (int i = 0; i < 6; i++)
+        printf("  %d. %s\n", i + 1, pieces[i]);
+
+    do
+    {
+        printf("Votre choix (1-6) : ");
+        if (scanf("%d", &choix) != 1)
+        {
+            // Vider le buffer en cas de saisie invalide
+            while (getchar() != '\n')
+                ;
+            choix = 0;
+        }
+    } while (choix < 1 || choix > 6);
+
+    strncpy(participant->currentRoom, pieces[choix - 1], 31);
+    participant->currentRoom[31] = '\0';
+
+    printf("%s se deplace dans : %s\n\n", participant->name, participant->currentRoom);
 }
