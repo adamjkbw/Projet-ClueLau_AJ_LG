@@ -12,7 +12,7 @@ int main() {
     int nbJoueurs = 0;
 
     addParticipants(listeParticipants, &nbJoueurs);
-    distribCartes(listeParticipants, listeCartes, nbJoueurs)
+    distribCartes(listeParticipants, listeCartes, nbJoueurs);
 
     for (int i = 0; i < nbJoueurs; i++) {
         free(listeParticipants[i]);

@@ -1,6 +1,5 @@
 #include "cluedo.h"
 
-#include <algorithm>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -132,28 +131,26 @@ void melangerCartes(card* listeCartes[18]) {
     }
 }
 
-void distribCartes(player* participants[], card* listCards[], int count) {
-
-    void distribuerCartes(card* listeCartes[18], player* participants[], int nbJoueurs) {
-
-        melangerCartes(listeCartes);
 
 
-        int indexCarteJoueur[6] = {0};
-        int joueurActuel = 0;
+void distribCartes(player* participants[], card* listCards[], int count) { {
 
-        for (int i = 0; i < 18; i++) {
-            player* p = participants[joueurActuel];
-            int positionDansSonDeck = indexCarteJoueur[joueurActuel];
+    melangerCartes(listCards);
 
-            strncpy(p->cards[positionDansSonDeck].name, listeCartes[i]->name, 31);
-            p->cards[positionDansSonDeck].name[31] = '\0';
 
-            indexCarteJoueur[joueurActuel]++;
+    int indexCarteJoueur[6] = {0};
+    int joueurActuel = 0;
 
-            joueurActuel = (joueurActuel + 1) % nbJoueurs;
-        }
-        printf("Toutes les cartes ont ete distribuees !\n");
+    for (int i = 0; i < 18; i++) {
+        player* p = participants[joueurActuel];
+        int positionDansSonDeck = indexCarteJoueur[joueurActuel];
+
+        strncpy(p->cards[positionDansSonDeck].name, listCards[i]->name, 31);
+        p->cards[positionDansSonDeck].name[31] = '\0';
+
+        indexCarteJoueur[joueurActuel]++;
+
+        joueurActuel = (joueurActuel + 1) % count;
     }
-
+    printf("Toutes les cartes ont ete distribuees !\n");
 }

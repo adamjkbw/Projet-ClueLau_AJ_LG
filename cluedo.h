@@ -1,7 +1,7 @@
 #ifndef CLUEDO_H
 #define CLUEDO_H
 
-typedef struct card {
+typedef struct {
     char name[32];
 }card;
 
@@ -16,8 +16,9 @@ void addName(player* self);
 player* addPlayer ();
 player* createAi();
 void addParticipants(player* participants[], int* count);
-void distribCartes(player* participants[], card* listCards[], int count)
 void initCards (card* list[18]);
+void melangerCartes(card* listeCartes[18]);
+void distribCartes(player* participants[], card* listCards[], int count);
 
 
 #endif
