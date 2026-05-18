@@ -140,7 +140,7 @@ void distribCartes(player* participants[], card* listCards[], int count) {
     int indexCarteJoueur[6] = {0};
     int joueurActuel = 0;
 
-    for (int i = 0; i < 18; i++) {
+    for (int i = 0; i < count * 3; i++) {
         player* p = participants[joueurActuel];
         int positionDansSonDeck = indexCarteJoueur[joueurActuel];
 
