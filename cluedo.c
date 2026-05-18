@@ -113,10 +113,23 @@ void initCards(card *cardList[])
         // Allocation de la mémoire pour UNE carte
         cardList[i] = malloc(sizeof(card));
 
-        if (cardList[i] != NULL)
+        if (cardList[i] != NULL && i <= 5)
         {
             strncpy(cardList[i]->name, nomsCartes[i], 31);
             cardList[i]->name[31] = '\0';
+            cardList[i]->type = 0;
+        }
+        else if (cardList[i] != NULL && i <= 11)
+        {
+            strncpy(cardList[i]->name, nomsCartes[i], 31);
+            cardList[i]->name[31] = '\0';
+            cardList[i]->type = 1;
+        }
+        else if (cardList[i] != NULL && i <= 15)
+        {
+            strncpy(cardList[i]->name, nomsCartes[i], 31);
+            cardList[i]->name[31] = '\0';
+            cardList[i]->type = 2;
         }
         else
         {
