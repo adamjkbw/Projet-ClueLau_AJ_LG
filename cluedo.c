@@ -59,7 +59,7 @@ player* createAi() {
     return newP;
 }
 
-int addParticipants (player* participants[], int* count) {
+void addParticipants (player* participants[], int* count) {
     //Cette fonction remplit le tableau de joueurs jusqu'à être au maximum (6) ou jusqu'à ce que l'user décide de l'arrêter
     // il prend en paramètre un tableau de type joueur
     int loop = 0;
@@ -91,11 +91,10 @@ int addParticipants (player* participants[], int* count) {
         }
 
     }
-    return count;
 
 }
 
-void initCards(player* list[]){
+void initCards(card* cardList[]){
     const char* nomsCartes[18] = {
             // Suspects
             "Mlle Rose", "Col. Moutarde", "Prof. Violet", "Mme Blanche", "Dr Olive", "Mme Pervenche",
@@ -107,11 +106,11 @@ void initCards(player* list[]){
 
     for (int i = 0; i < 18; i++) {
             // Allocation de la mémoire pour UNE carte
-            listeCartes[i] = malloc(sizeof(card));
+            cardList[i] = malloc(sizeof(card));
 
-            if (listeCartes[i] != NULL) {
-                strncpy(listeCartes[i]->name, nomsCartes[i], 31);
-                listeCartes[i]->name[31] = '\0';
+            if (cardList[i] != NULL) {
+                strncpy(cardList[i]->name, nomsCartes[i], 31);
+                cardList[i]->name[31] = '\0';
             } else {
                 printf("Erreur d'allocation mémoire pour la carte %d\n", i);
             }
@@ -133,7 +132,7 @@ void melangerCartes(card* listeCartes[18]) {
 
 
 
-void distribCartes(player* participants[], card* listCards[], int count) { {
+void distribCartes(player* participants[], card* listCards[], int count) {
 
     melangerCartes(listCards);
 

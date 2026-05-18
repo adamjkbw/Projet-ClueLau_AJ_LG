@@ -16,7 +16,7 @@ void addName(player* self);
 player* addPlayer ();
 player* createAi();
 void addParticipants(player* participants[], int* count);
-void initCards (card* list[18]);
+void initCards (card* cardList[]);
 void melangerCartes(card* listeCartes[18]);
 void distribCartes(player* participants[], card* listCards[], int count);
 

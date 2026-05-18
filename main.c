@@ -8,7 +8,7 @@ int main() {
 
     player* listeParticipants[6] = {NULL};
     card* listeCartes[18] = {NULL};
-    initCards(card* listeCartes[]);
+    initCards(listeCartes);
     int nbJoueurs = 0;
 
     addParticipants(listeParticipants, &nbJoueurs);
