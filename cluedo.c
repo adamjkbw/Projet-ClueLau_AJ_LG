@@ -149,8 +149,6 @@ void chooseWinningCards(card* cardList[], int cardCount, card* winning[3]) {
         }
     }
 
-    srand(time(NULL));
-
     for (int t = 0; t < 3; t++) {
         if (typeCounts[t] == 0) {
             winning[t] = NULL;
@@ -241,4 +239,28 @@ void deplacement(player *participant, int nbJoueurs, char pieces[])
     participant->currentRoom[31] = '\0';
 
     printf("%s se deplace dans : %s\n\n", participant->name, participant->currentRoom);
+}
+
+void accusation(card* listeCartes[18], card* winning[3], int* loopCondition, player* participant) {
+    char accusé[32];
+    char lieu[32];
+    char arme[32];
+
+    printf("Qui voulez vous accuser ?\n");
+    scanf("%31s", accusé);
+
+    printf("Où s'est passé le meurtre d'après vous?\n");
+    scanf("%31s", lieu);
+
+    printf("Quelle est l'arme du crime?\n");
+    scanf("%31s", arme);
+
+    if (strcmp(accusé, winning[0]->name) == 0 &&
+        strcmp(arme,   winning[1]->name) == 0 &&
+        strcmp(lieu,   winning[2]->name) == 0) {
+        printf("Vous avez résolu le mystère! :D\n");
+    } else {
+        printf("Vous avez perdu :/ %s est éliminé.\n", participant->name);
+    }
+
 }
